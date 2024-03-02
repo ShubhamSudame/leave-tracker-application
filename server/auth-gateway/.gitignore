@@ -40,3 +40,4 @@ prisma/migrations/*_
 secrets/
 resources/
 src/database/database.service.ts
+test/files/
