@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  mongo:
+    image: mongodb/mongodb-community-server:latest
+    restart: always
+    container_name: python-db
+    env_file:
+      - ./.env
+    environment:
+      - MONGODB_INITDB_ROOT_USERNAME=root
+      - MONGODB_INITDB_ROOT_PASSWORD=password123
+    ports:
+      - 27017:27017
+  mongo-express:
+    image: mongo-express
+    container_name: python-db-ui
+    restart: always
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=pass
+      - ME_CONFIG_MONGODB_URL=mongodb://root:password123@mongo:27017
+    ports:
+      - 8081:8081

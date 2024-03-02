@@ -1,0 +1,30 @@
+# Use version 3.8 of the Docker Compose file format
+version: '3.8'
+# Define services
+services:
+  # Define the application
+  # nest-authentication-microservice:
+  #   image: nest-authentication:1.0
+  #   ports:
+  #     -3000:3000
+  # Define the service for the Postgres container
+  db:
+    container_name: auth_gateway_db
+    # Use the latest Postgres image
+    image: postgres:latest
+    # Set the environment variables for creating the user, password, and database
+    environment:
+      - POSTGRES_USER=${DB_NAME} # use admin as the user
+      - POSTGRES_PASSWORD=${DB_PASSWORD} # use password123 as the password
+      - POSTGRES_DB=auth_gateway # use auth_gateway as the database name
+    # Map the port 5432 of the container to the port 5432 of the host machine
+    ports:
+      - '5433:5432'
+    # Mount a named volume to persist the data on the host machine
+    volumes:
+      - pg-data:/var/lib/postgresql/data # use pg-data as the volume name
+
+# Define volumes
+volumes:
+  # Define a named volume for the Postgres data
+  pg-data: # use pg-data as the volume name
