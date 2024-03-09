@@ -1,0 +1,172 @@
+openapi: 3.0.0
+paths:
+  /auth/register:
+    post:
+      operationId: AuthController_register
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags: &ref_0
+        - Auth
+  /auth/login/email:
+    post:
+      operationId: AuthController_loginViaEmailPassword
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags: *ref_0
+  /auth/login/phone:
+    post:
+      operationId: AuthController_loginViaPhoneNumber
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags: *ref_0
+  /auth/verifyotp:
+    post:
+      operationId: AuthController_verifyOTP
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags: *ref_0
+  /auth/resendotp:
+    post:
+      operationId: AuthController_resendOTP
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags: *ref_0
+  /auth/logout:
+    get:
+      operationId: AuthController_logout
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags: *ref_0
+  /users:
+    get:
+      operationId: UserController_getUsersList
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags: &ref_1
+        - User
+    post:
+      operationId: UserController_createNewUser
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags: *ref_1
+  /users/me:
+    get:
+      operationId: UserController_getUser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags: *ref_1
+  /users/{id}:
+    delete:
+      operationId: UserController_deleteUser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags: *ref_1
+  /users/{id}/update/manager:
+    patch:
+      operationId: UserController_updateUserManager
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags: *ref_1
+  /users/{id}/update/role:
+    patch:
+      operationId: UserController_updateUserRole
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags: *ref_1
+  /users/resetpassword:
+    put:
+      operationId: UserController_resetUserPassword
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags: *ref_1
+  /users/update/phonenumber:
+    patch:
+      operationId: UserController_updateUserPhoneNumber
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags: *ref_1
+  /users/update/photo:
+    patch:
+      operationId: UserController_updateUserPhoto
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags: *ref_1
+  /upload:
+    post:
+      operationId: UploadController_uploadFile
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - Upload
+  /holidays:
+    get:
+      operationId: HolidaysController_getHolidays
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags: &ref_2
+        - Holidays
+    put:
+      operationId: HolidaysController_addHoliday
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags: *ref_2
+  /holidays/{date}:
+    delete:
+      operationId: HolidaysController_deleteHoliday
+      parameters:
+        - name: date
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+      tags: *ref_2
+info:
+  title: Holidays API
+  description: ''
+  version: '1.0'
+  contact: {}
+tags: []
+servers:
+  - url: http://localhost:3000/
+    description: Local Envirionment
+components:
+  schemas: {}
